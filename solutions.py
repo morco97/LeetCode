@@ -45,6 +45,22 @@ class Solution:
             return self.helper(v1, v2)
             
         return self.helper(v1, v2)
+
+    def reversePrefix(self, word: str, ch: str) -> str:
+        """
+        2000. Reverse Prefix of Word
+        """
+        if word[0] == ch:
+            return word
+        temp = word[0]
+        for i in range(1, len(word) - 1):
+            if word[i] == ch:
+                temp += word[i]
+                return temp[::-1] + word[i + 1:]
+            temp += word[i]
+        if word[-1] == ch:
+            return word[::-1]
+        return word
         
     def findMaxK(self, nums: List[int]) -> int:
         """
