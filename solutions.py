@@ -46,6 +46,15 @@ class Solution:
             
         return self.helper(v1, v2)
 
+        def rotate(self, nums: List[int], k: int) -> None:
+        """
+        189. Rotate Array. LeetCode Medium.
+        """
+        if len(nums) > 1:
+            k = k % len(nums)
+            nums[:len(nums) - k], nums[len(nums) - k: len(nums)] = nums[len(nums) - k: len(nums)], nums[:len(nums) - k]
+
+
     def reversePrefix(self, word: str, ch: str) -> str:
         """
         2000. Reverse Prefix of Word
