@@ -1,4 +1,35 @@
 class Solution:
+        def lengthOfLongestSubstring(self, s: str) -> int:
+            """
+            3. Longest Substring Without Repeating Characters. LeetCode meduim. Naive approch,
+            and a sliding window approach.
+            """
+        # longest = 0
+        # for i in range(len(s)):
+        #     curr = 0
+        #     visited = set()
+        #     for j in range(i, len(s)):
+        #         if s[j] not in visited:
+        #             curr += 1
+        #             visited.add(s[j])
+        #         else:
+        #             break
+        #     longest = curr if curr > longest else longest
+        # return longest
+        visited = {}
+        l = 0
+        longest = 0
+        for r in range(len(s)):
+            if s[r] not in visited:
+                longest = max(r - l + 1, longest)
+            else:
+                if visited[s[r]] < l:
+                    longest = max(longest, r - l + 1)
+                else:
+                    l = visited[s[r]] + 1
+            visited[s[r]] = r
+        return longest
+    
     def removeDuplicates(self, nums: List[int]) -> int:
       """
       80. Remove Duplicates from Sorted Array II. LeetCode Medium.
