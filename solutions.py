@@ -1,4 +1,4 @@
-QUESTION_COUNTER = 8
+question_counter = 8
 
 
 class Solution:
