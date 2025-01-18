@@ -56,7 +56,6 @@ class Solution:
                 r += 1
         return longest
 
-    
     def removeDuplicates(self, nums: List[int]) -> int:
       """
       80. Remove Duplicates from Sorted Array II. LeetCode Medium.
@@ -70,7 +69,6 @@ class Solution:
                   index -= 1
                   total -= 1
           index += 1
-    
       return total if len(nums) >= 2 else 1
 
     def compareVersion(self, version1: str, version2: str) -> int:
@@ -130,8 +128,6 @@ class Solution:
                 r += 1
         return counter
         
-
-
     def reversePrefix(self, word: str, ch: str) -> str:
         """
         2000. Reverse Prefix of Word
