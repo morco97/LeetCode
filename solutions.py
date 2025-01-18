@@ -1,9 +1,9 @@
 class Solution:
-        def lengthOfLongestSubstring(self, s: str) -> int:
-            """
-            3. Longest Substring Without Repeating Characters. LeetCode meduim. Naive approch,
-            and a sliding window approach.
-            """
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        """
+        3. Longest Substring Without Repeating Characters. LeetCode meduim. Naive approch,
+        and a sliding window approach.
+        """
         # longest = 0
         # for i in range(len(s)):
         #     curr = 0
@@ -29,6 +29,30 @@ class Solution:
                     l = visited[s[r]] + 1
             visited[s[r]] = r
         return longest
+
+    def longestPalindrome(self, s: str) -> str:
+            """
+            5. Longest Palindromic Substring. LeetCode medium.
+            """
+        longest = ""
+        lenLongest = 0
+        for i in range(len(s)):
+            l, r = i, i
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > lenLongest:
+                    longest = s[l:r + 1]
+                    lenLongest = r - l + 1
+                l -= 1
+                r += 1
+            l, r = i, i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > lenLongest:
+                    longest = s[l:r + 1]
+                    lenLongest = r - l + 1
+                l -= 1
+                r += 1
+        return longest
+
     
     def removeDuplicates(self, nums: List[int]) -> int:
       """
@@ -77,13 +101,13 @@ class Solution:
             
         return self.helper(v1, v2)
 
-        def rotate(self, nums: List[int], k: int) -> None:
-        """
-        189. Rotate Array. LeetCode Medium.
-        """
-        if len(nums) > 1:
-            k = k % len(nums)
-            nums[:len(nums) - k], nums[len(nums) - k: len(nums)] = nums[len(nums) - k: len(nums)], nums[:len(nums) - k]
+    def rotate(self, nums: List[int], k: int) -> None:
+            """
+            189. Rotate Array. LeetCode Medium.
+            """
+            if len(nums) > 1:
+                k = k % len(nums)
+                nums[:len(nums) - k], nums[len(nums) - k: len(nums)] = nums[len(nums) - k: len(nums)], nums[:len(nums) - k]
 
 
     def reversePrefix(self, word: str, ch: str) -> str:
