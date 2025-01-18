@@ -1,3 +1,6 @@
+QUESTION_COUNTER = 7
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
@@ -31,9 +34,9 @@ class Solution:
         return longest
 
     def longestPalindrome(self, s: str) -> str:
-            """
-            5. Longest Palindromic Substring. LeetCode medium.
-            """
+        """
+        5. Longest Palindromic Substring. LeetCode medium.
+        """
         longest = ""
         lenLongest = 0
         for i in range(len(s)):
@@ -102,12 +105,12 @@ class Solution:
         return self.helper(v1, v2)
 
     def rotate(self, nums: List[int], k: int) -> None:
-            """
-            189. Rotate Array. LeetCode Medium.
-            """
-            if len(nums) > 1:
-                k = k % len(nums)
-                nums[:len(nums) - k], nums[len(nums) - k: len(nums)] = nums[len(nums) - k: len(nums)], nums[:len(nums) - k]
+        """
+        189. Rotate Array. LeetCode Medium.
+        """
+        if len(nums) > 1:
+            k = k % len(nums)
+            nums[:len(nums) - k], nums[len(nums) - k: len(nums)] = nums[len(nums) - k: len(nums)], nums[:len(nums) - k]
 
 
     def reversePrefix(self, word: str, ch: str) -> str:
