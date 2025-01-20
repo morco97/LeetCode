@@ -56,6 +56,23 @@ class Solution:
                 r += 1
         return longest
 
+    def convert(self, s: str, numRows: int) -> str:
+        """
+        6. Zigzag Conversion. LeetCode medium.
+        """
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        container = ["" for _ in range(numRows)] 
+        goingDown = False
+        row = 0
+        for ch in s:
+            container[row] += ch
+            if row == 0 or row == numRows - 1:
+                goingDown = not goingDown
+            row += 1 if goingDown else -1
+        return "".join(container)
+
     def removeDuplicates(self, nums: List[int]) -> int:
       """
       80. Remove Duplicates from Sorted Array II. LeetCode Medium.
