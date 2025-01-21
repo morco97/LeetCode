@@ -1,4 +1,4 @@
-question_counter = 9
+question_counter = 10
 
 
 class Solution:
