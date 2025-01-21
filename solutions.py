@@ -73,6 +73,23 @@ class Solution:
             row += 1 if goingDown else -1
         return "".join(container)
 
+        def reverse(self, x: int) -> int:
+        """
+        7. Reverse Integer. LeetCode meduim.
+        """
+        ans = list(str(x))
+        prefix = ans[0] if ans[0] == "-" else ""
+        if not prefix:
+            ans = ans[::-1]
+            ans = "".join(ans)
+        else:
+            ans = ans[1:]
+            ans = ans[::-1]
+            ans = "".join(ans)
+            ans = prefix + ans
+        return int(ans) if int(ans) >= (-2) ** 31 and int(ans) <= ((2 ** 31) -1 ) else 0
+        
+
     def removeDuplicates(self, nums: List[int]) -> int:
       """
       80. Remove Duplicates from Sorted Array II. LeetCode Medium.
