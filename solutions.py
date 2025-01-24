@@ -136,6 +136,23 @@ class Solution:
             
         return self.helper(v1, v2)
 
+    def maxProfit(self, prices: List[int]) -> int:
+        """
+        122. Best Time to Buy and Sell Stock II. LeetCode medium.
+        """
+        total, maximal, l, r = 0, 0, 0, 1
+        while r < len(prices):
+            if prices[r] - prices[l] < maximal:
+                l += 1
+                r += 1
+            else:
+                total += prices[r] - prices[l] 
+                l = r
+                r += 1
+                maximal = 0
+        return total
+
+
     def rotate(self, nums: List[int], k: int) -> None:
         """
         189. Rotate Array. LeetCode Medium.
