@@ -4,21 +4,8 @@ question_counter = 12
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
-        3. Longest Substring Without Repeating Characters. LeetCode meduim. Naive approch,
-        and a sliding window approach.
+        3. Longest Substring Without Repeating Characters. LeetCode meduim.
         """
-        # longest = 0
-        # for i in range(len(s)):
-        #     curr = 0
-        #     visited = set()
-        #     for j in range(i, len(s)):
-        #         if s[j] not in visited:
-        #             curr += 1
-        #             visited.add(s[j])
-        #         else:
-        #             break
-        #     longest = curr if curr > longest else longest
-        # return longest
         visited = {}
         l = 0
         longest = 0
