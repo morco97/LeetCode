@@ -1,4 +1,4 @@
-question_counter = 11
+question_counter = 12
 
 
 class Solution:
@@ -135,6 +135,21 @@ class Solution:
             return self.helper(v1, v2)
             
         return self.helper(v1, v2)
+
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        """
+        167. Two Sum II - Input Array Is Sorted. LeetCode medium.
+        """
+        l, r = 0, len(numbers) - 1
+        while l < r:
+            total = numbers[r] + numbers[l]
+            if total == target:
+                return[l + 1, r + 1]
+            elif total > target:
+                r -= 1
+            else:
+                l += 1
+
 
     def maxProfit(self, prices: List[int]) -> int:
         """
