@@ -60,7 +60,7 @@ class Solution:
             row += 1 if goingDown else -1
         return "".join(container)
 
-        def reverse(self, x: int) -> int:
+    def reverse(self, x: int) -> int:
         """
         7. Reverse Integer. LeetCode meduim.
         """
@@ -78,19 +78,19 @@ class Solution:
         
 
     def removeDuplicates(self, nums: List[int]) -> int:
-      """
-      80. Remove Duplicates from Sorted Array II. LeetCode Medium.
-      """
-      total = 2
-      index = 2
-      while index < len(nums):
-          total += 1
-          if nums[index] == nums[index-2]:
-                  nums.pop(index)
-                  index -= 1
-                  total -= 1
-          index += 1
-      return total if len(nums) >= 2 else 1
+        """
+        80. Remove Duplicates from Sorted Array II. LeetCode Medium.
+        """
+        total = 2
+        index = 2
+        while index < len(nums):
+        total += 1
+        if nums[index] == nums[index-2]:
+              nums.pop(index)
+              index -= 1
+              total -= 1
+        index += 1
+        return total if len(nums) >= 2 else 1
 
     def maxProfit(self, prices: List[int]) -> int:
         """
