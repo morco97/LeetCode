@@ -1,4 +1,4 @@
-question_counter = 12
+question_counter = 13
 
 
 class Solution:
@@ -75,6 +75,22 @@ class Solution:
             ans = "".join(ans)
             ans = prefix + ans
         return int(ans) if int(ans) >= (-2) ** 31 and int(ans) <= ((2 ** 31) -1 ) else 0
+
+    def maxArea(self, height: List[int]) -> int:
+        """
+        11. Container With Most Water. LeetCode meduim.
+        """
+        r, l = 0, len(height) - 1
+        maximal = (l - r) * min(height[r], height[l])
+        while r < l:
+            if height[r] < height[l]:
+                r += 1
+            else:
+                l -= 1
+            temp = (l - r) * min(height[r], height[l])
+            maximal = max(maximal, temp)
+        return maximal
+            
         
 
     def removeDuplicates(self, nums: List[int]) -> int:
