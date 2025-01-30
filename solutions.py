@@ -20,6 +20,25 @@ class Solution:
             visited[s[r]] = r
         return longest
 
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        """
+        3. Longest Substring Without Repeating Characters. LeetCode meduim.
+        Sliding window solution.
+        """
+        l, r = 0, 0
+        maxSize = 0
+        seen = set()
+        while r < len(s):
+            if (s[r] in seen):
+                seen.remove(s[l])
+                l += 1
+            else:
+                maxSize = max(maxSize, r - l + 1)
+                seen.add(s[r])
+                r += 1
+        return maxSize
+
+
     def longestPalindrome(self, s: str) -> str:
         """
         5. Longest Palindromic Substring. LeetCode medium.
