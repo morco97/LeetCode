@@ -1,4 +1,4 @@
-question_counter = 14
+question_counter = 15
 
 
 class Solution:
@@ -222,6 +222,27 @@ class Solution:
         if len(nums) > 1:
             k = k % len(nums)
             nums[:len(nums) - k], nums[len(nums) - k: len(nums)] = nums[len(nums) - k: len(nums)], nums[:len(nums) - k]
+
+    def compress(self, chars: List[str]) -> int:
+        """
+        443. String Compression. LeetCode meduim.
+        """
+        i = 0
+        index = 0
+        while i < len(chars):
+            char = chars[i]
+            counter = 0
+            while i < len(chars) and chars[i] == char:
+                i += 1
+                counter += 1
+            chars[index] = char
+            index += 1
+            if counter > 1:
+                for ch in str(counter):
+                    chars[index] = ch
+                    index += 1
+        return index
+
 
     def countSubstrings(self, s: str) -> int:
         """
