@@ -95,6 +95,45 @@ class Solution:
             ans = prefix + ans
         return int(ans) if int(ans) >= (-2) ** 31 and int(ans) <= ((2 ** 31) -1 ) else 0
 
+    def myAtoi(self, s: str) -> int:
+        """
+        8. String to Integer (atoi). LeetCode medium.
+        """
+        def round(res):
+            if res < -2 ** 31:
+                return -2 ** 31
+            if res > ((2 ** 31) - 1):
+                return (2 ** 31) - 1
+            return res
+
+        digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
+        lead = True
+        res = 0
+        neg = False
+        for ch in s:
+            if lead:
+                if ch == " ":
+                    continue
+                elif ch == "0":
+                    lead = False 
+                    continue
+                elif ch == "-" or ch == "+":
+                    neg = True if ch == "-" else False
+                    lead = False
+                elif ch in digits and ch !="0":
+                    res *= 10
+                    res += int(ch)
+                    lead = False
+                else:
+                    break
+            elif ch in digits:
+                res *= 10
+                res += int(ch)
+            else:
+                break
+        res = (-1) * res if neg else res
+        return round(res)
+
     def maxArea(self, height: List[int]) -> int:
         """
         11. Container With Most Water. LeetCode meduim.
