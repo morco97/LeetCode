@@ -1,6 +1,3 @@
-question_counter = 15
-
-
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
@@ -177,6 +174,35 @@ class Solution:
                 else:
                     r -= 1
         return ans
+
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        """
+        36. Valid Sudoku. LeetCode meduim
+        """
+        for i in range(len(board)):
+            appeared_row = set()
+            appeared_col = set()
+            for j in range(len(board)):
+                if board[i][j].isdigit():      
+                    if board[i][j] in appeared_row:
+                        return False
+                    appeared_row.add(board[i][j])
+                if board[j][i].isdigit():    
+                    if board[j][i] in appeared_col:
+                        return False
+                    appeared_col.add(board[j][i])
+        boxes = [(0, 0), (0, 3), (0, 6),
+                (3, 0), (3, 3), (3, 6),
+                (6, 0), (6, 3), (6, 6)]
+        for box in boxes:
+            appeared = set()
+            for i in range(3):
+                for j in range(3):
+                    if board[i+box[0]][j+box[1]].isdigit():    
+                        if board[i+box[0]][j+box[1]] in appeared:
+                            return False
+                        appeared.add(board[i+box[0]][j+box[1]])
+        return True
             
     def removeDuplicates(self, nums: List[int]) -> int:
         """
