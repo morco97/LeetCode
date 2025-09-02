@@ -327,6 +327,30 @@ class Solution:
                 r += 1
         return counter
 
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        """994. Rotting Oranges. LeetCode Meduim. BFS """
+        rows, cols = len(grid), len(grid[0])
+        rotten = deque()
+        fresh = 0
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    fresh += 1
+                elif grid[r][c] == 2:
+                    rotten.append([r, c, 0])
+        if not fresh: return 0
+
+        while rotten and fresh:
+            r, c, time = rotten.popleft()
+            for i,j in [[r+1, c], [r-1, c], [r,c+1], [r,c-1]]:
+                if i>=0 and i<rows and j>=0 and j<cols and grid[i][j] == 1:
+                    fresh -= 1
+                    if fresh == 0:
+                        return time + 1
+                    grid[i][j] = 2
+                    rotten.append([i, j, time + 1])
+        return -1
+
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         """1926. Nearest Exit from Entrance in Maze. LeetCode Meduim, BFS"""
         rows, cols = len(maze), len(maze[0])
