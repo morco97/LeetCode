@@ -326,7 +326,25 @@ class Solution:
                 l -= 1
                 r += 1
         return counter
+
+    def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
+        """1926. Nearest Exit from Entrance in Maze. LeetCode Meduim, BFS"""
+        rows, cols = len(maze), len(maze[0])
+        cells = [(entrance[0], entrance[1], 0)]
+        maze[entrance[0]][entrance[1]] = '+'
+
+        while cells:
+            row, col, steps = cells.pop(0)
+            
+            for i,j in [[row+1, col], [row-1, col], [row, col+1], [row, col-1]]:
+                if i>=0 and j>=0 and i<rows and j<cols and maze[i][j] == '.':
+                    cells.append((i, j, steps + 1))
+                    if i==0 or j==0 or i==rows-1 or j==cols-1 and maze[i][j]=='.':
+                        return steps + 1 
+                    maze[i][j] = '+'
         
+        return -1
+
     def reversePrefix(self, word: str, ch: str) -> str:
         """
         2000. Reverse Prefix of Word
